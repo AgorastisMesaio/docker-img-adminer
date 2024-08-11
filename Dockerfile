@@ -21,9 +21,6 @@ EXPOSE 8080
 # Autologin
 COPY config/index.php /var/www/html/index.php
 
-# Run Adminer as adminer user
-USER adminer
-
 # Copy healthcheck
 ADD healthcheck.sh /healthcheck.sh
 RUN chmod +x /healthcheck.sh
@@ -36,6 +33,9 @@ RUN chmod +x /healthcheck.sh
 # --retries=3: Retry check 'retries' times before considering the container as unhealthy.
 HEALTHCHECK --interval=30s --timeout=10s --start-period=3s --retries=3 \
   CMD /healthcheck.sh || exit $?
+
+# Run Adminer as adminer user
+USER adminer
 
 # Start the program with PHP
 CMD	[ "php", "-S", "[::]:8080", "-t", "/var/www/html" ]
