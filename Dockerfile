@@ -9,7 +9,8 @@
 FROM adminer:latest
 
 # Tools for healthcheck
-RUN apt-get update && apt-get install -y openssl netcat-openbsd
+# Oly install what I'll need, i.e.: openssl netcat-openbsd curl.
+RUN apt-get update && apt install -y curl
 
 # Administrative port
 EXPOSE 8080
