@@ -6,7 +6,7 @@
 # I'm implementing Auto Login capability so it's easier
 # for developers working on DB's
 #
-FROM adminer:latest
+FROM adminer:4.8.1
 
 # Run install as root
 USER root
