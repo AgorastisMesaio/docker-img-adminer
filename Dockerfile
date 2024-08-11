@@ -8,6 +8,9 @@
 #
 FROM adminer:latest
 
+# Run install as root
+USER root
+
 # Tools for healthcheck
 # Oly install what I'll need, i.e.: openssl netcat-openbsd curl.
 RUN apt-get update && apt install -y curl
